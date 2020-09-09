@@ -1,0 +1,629 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>A Technical Documentation Page</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <header>
+            <h1>ReactJS Documentation</h1>
+        </header>
+        <ol id="nav-list">
+            <a href="#Introduction" class="nav-link">
+                <li>Introduction</li>
+            </a>
+            <a href="#JSX" class="nav-link">
+                <li>JSX</li>
+            </a>
+            <a href="#Components" class="nav-link">
+                <li>Components</li>
+            </a>
+            <a href="#State" class="nav-link">
+                <li>State</li>
+            </a>
+            <a href="#Props Overview" class="nav-link">
+                <li>Props Overview</li>
+            </a>
+            <a href="#Props Validation" class="nav-link">
+                <li>Props Validation</li>
+            </a>
+            <a href="#Component API" class="nav-link">
+                <li>Component API</li>
+            </a>
+            <a href="#Component Life Cycle" class="nav-link">
+                <li>Component Life Cycle</li>
+            </a>
+            <a href="#Refs" class="nav-link">
+                <li>Refs</li>
+            </a>
+            <a href="#Keys" class="nav-link">
+                <li>Keys</li>
+            </a>
+            <a href="#Flux Concepts" class="nav-link">
+                <li>Flux Concepts</li>
+            </a>
+            <a href="#Events" class="nav-link">
+                <li>Events</li>
+            </a>
+            <a href="#Router" class="nav-link">
+                <li>Router</li>
+            </a>
+            <a href="#Animtion" class="nav-link">
+                <li>Animtion class</li>
+            </a>
+            <a href="#Higher Order Components" class="nav-link">
+                <li>Higher Order Components</li>
+            </a>
+            <a href="#Reference" class="nav-link">
+                <li>Reference</li>
+            </a>
+        </ol>
+    </nav>
+
+    <main id="main-doc">
+        <section id="Introduction" class="main-section">
+            <header>
+                <h2>Introduction</h2>
+            </header>
+            <article>
+                <p>
+                    React is a front-end library developed by Facebook. It is used for handling the view layer for web
+                    and
+                    mobile apps. ReactJS allows us to create reusable UI components. It is currently one of the most
+                    popular
+                    JavaScript libraries and has a strong foundation and large community behind it.
+
+                </p>
+                <p>
+                    ReactJS is JavaScript library used for building reusable UI components. According to React official
+                    documentation,
+                    following is the definition −
+                    React is a library for building composable user interfaces. It encourages the creation of reusable
+                    UI components,
+                    which present data that changes over time. Lots of people use React as the V in MVC. React abstracts
+                    away the DOM
+                    from you, offering a simpler programming model and better performance. React can also render on the
+                    server using Node,
+                    and it can power native apps using React Native. React implements one-way reactive data flow, which
+                    reduces the boilerplate
+                    and is easier to reason about than traditional data binding.
+                <ol>
+                    <li>Uses virtual DOM which is a JavaScript object. This will improve apps performance,
+                        since JavaScript virtual DOM is faster than the regular DOM.
+                    </li>
+                    <li>Can be used on client and server side as well as with other frameworks.
+                    </li>
+                    <li> Component and data patterns improve readability, which helps to maintain larger apps.
+                    </li>
+                </ol>
+                </p>
+            </article>
+        </section>
+        <section id="JSX" class="main-section">
+            <header>
+                <h2>JSX</h2>
+            </header>
+            <article>
+                <p>This guide assumes you have the following basic background:</p>
+                <p>
+                <ol>
+                    <li>React uses JSX for templating instead of regular JavaScript. It is not necessary to use it,
+                        however, following are some pros that come with it.
+                    </li>
+                    <li>It is faster because it performs optimization while compiling code to JavaScript.
+                    </li>
+                    <li>It is also type-safe and most of the errors can be caught during compilation.
+                    </li>
+                    <li>It makes it easier and faster to write templates, if you are familiar with HTML.
+                    </li>
+                </ol>
+                <p>JSX looks like a regular HTML in most cases. We already used it in the Environment Setup chapter.
+                    Look at the code from App.jsx where we are returning div.
+                    <code>import React from 'react';
+
+                    class App extends React.Component {
+                       render() {
+                          return (
+                                Hello World!!!
+                          );
+                       }
+                    }
+                    export default App;
+                    </code>
+                </p>
+            </article>
+        </section>
+        <section id="Components" class="main-section">
+            <header>
+                <h2>Components</h2>
+                <h3>Stateless Example</h3>
+            </header>
+            <article>
+                <p>
+                    Our first component in the following example is App. This component is owner of Header and Content.
+                    We are creating Header and Content separately and just adding it inside JSX tree in our App
+                    component.
+                    Only App component needs to be exported.</p>
+                <header>
+                    <h4>Stateful Example</h4>
+                </header>
+                <p>
+                    In this example, we will set the state for owner component (App). The Header component is just added
+                    like in
+                    the last example since it doesn't need any state. Instead of content tag, we are creating table and
+                    tbody elements,
+                    where we will dynamically insert TableRow for every object from the data array.
+                    It can be seen that we are using EcmaScript 2015 arrow syntax (=>) which looks much cleaner than the
+                    old JavaScript syntax.
+                    This will help us create our elements with fewer lines of code. It is especially useful when we need
+                    to create a list with a
+                    lot of items.
+                </p>
+            </article>
+        </section>
+
+        <section id="State" class="main-section">
+            <header>
+                <h2>State</h2>
+            </header>
+            <article>
+                <p>State is the place where the data comes from. We should always try to make our state as simple as
+                    possible and minimize
+                    the number of stateful components. If we have, for example, ten components that need data from the
+                    state, we should create
+                    one container component that will keep the state for all of them.
+                </p>
+                <p>The following sample code shows how to create a stateful component using EcmaScript2016 syntax.</p>
+                <code>import React from 'react';
+
+        class App extends React.Component {
+           constructor(props) {
+              super(props);  
+              this.state = {
+                 header: "Header from state...",
+                 content: "Content from state..."
+              }
+           }
+           render() {
+              return (
+                    {this.state.header}
+                    {this.state.content}
+              );
+           }
+        }
+        export default App; 
+        </code>
+            </article>
+        </section>
+
+        <section id="Props Overview" class="main-section">
+            <header>
+                <h2>Props Overview</h2>
+            </header>
+            <article>
+                <p>The main difference between state and props is that props are immutable. This is why the container
+                    component should
+                    define the state that can be updated and changed, while the child components should only pass data
+                    from the state
+                    using props.
+                </p>
+                <p>You can also set default property values directly on the component constructor instead of adding it
+                    to the
+                    reactDom.render() element.
+                </p>
+                <p> We are setting the state in our parent component and passing it down the component tree using props.
+                    Inside the render function, we are setting headerProp and contentProp used in child components.
+                </p>
+            </article>
+        </section>
+        <section id="Props Validation" class="main-section">
+            <header>
+                <h2>Props Validation</h2>
+            </header>
+            <article>
+                <p>Properties validation is a useful way to force the correct usage of the components.
+                    This will help during development to avoid future bugs and problems, once the app becomes larger. I
+                    t also makes the code more readable, since we can see how each component should be used.
+                </p>
+                <p>In this example, we are creating App component with all the props that we need. App.propTypes is used
+                    for
+                    props validation. If some of the props aren't using the correct type that we assigned, we will get a
+                    console warning.
+                    After we specify validation patterns, we will set App.defaultProps.
+                </p>
+                <code>import React from 'react';
+
+            class App extends React.Component {
+               render() {
+                  return (
+                        Array: {this.props.propArray}
+                        Bool: {this.props.propBool ? "True..." : "False..."}
+                        Func: {this.props.propFunc(3)}
+                        Number: {this.props.propNumber}
+                        String: {this.props.propString}
+                        Object: {this.props.propObject.objectName1}
+                        Object: {this.props.propObject.objectName2}
+                        Object: {this.props.propObject.objectName3}
+                     
+                  );
+               }
+            }
+            
+            App.propTypes = {
+               propArray: React.PropTypes.array.isRequired,
+               propBool: React.PropTypes.bool.isRequired,
+               propFunc: React.PropTypes.func,
+               propNumber: React.PropTypes.number,
+               propString: React.PropTypes.string,
+               propObject: React.PropTypes.object
+            }
+            
+            App.defaultProps = {
+               propArray: [1,2,3,4,5],
+               propBool: true,
+               propFunc: function(e){return e},
+               propNumber: 1,
+               propString: "String value...",
+               
+               propObject: {
+                  objectName1:"objectValue1",
+                  objectName2: "objectValue2",
+                  objectName3: "objectValue3"
+               }
+            }
+            export default App;
+        </code>
+            </article>
+        </section>
+
+        <section id="Component API" class="main-section">
+            <header>
+                <h2>Component API</h2>
+            </header>
+            <article>
+                <p>
+                    three methods: setState(), forceUpdate and ReactDOM.findDOMNode(). In new ES6 classes, we have to
+                    manually bind this.
+                    We will use this.method.bind(this) in the examples.
+                </p>
+                <p>setState() method is used to update the state of the component. This method will not replace the
+                    state,
+                    but only add changes to the original state.
+                </p>
+                <p>Sometimes we might want to update the component manually. This can be achieved using the
+                    forceUpdate() method.</p>
+            </article>
+        </section>
+
+        <section id="Components Life Cycle" class="main-section">
+            <header>
+                <h2>Components Life Cycle</h2>
+            </header>
+            <article>
+                <p>componentWillMount is executed before rendering, on both the server and the client side.</p>
+                <p>componentDidMount is executed after the first render only on the client side.
+                    This is where AJAX requests and DOM or state updates should occur.
+                    This method is also used for integration with other JavaScript frameworks and any functions with
+                    delayed execution
+                    such as setTimeout or setInterval. We are using it to update the state so we can trigger the other
+                    lifecycle methods.
+                </p>
+                <p>componentWillReceiveProps is invoked as soon as the props are updated before another render is
+                    called.
+                    We triggered it from setNewNumber when we updated the state.
+                </p>
+                <p>shouldComponentUpdate should return true or false value. This will determine if the component will be
+                    updated or not.
+                    This is set to true by default. If you are sure that the component doesn't need to render after
+                    state or props are updated,
+                    you can return false value.
+                </p>
+
+            </article>
+        </section>
+
+        <section id="Refs" class="main-section">
+            <header>
+                <h2>Refs</h2>
+            </header>
+            <article>
+                <p>The ref is used to return a reference to the element. Refs should be avoided in most cases, however,
+                    they can be useful when we need DOM measurements or to add methods to the components.
+                </p>
+                <p> ClearInput function searches for element with ref = "myInput" value, resets the state, and
+                    adds focus to it after the button is clicked.
+                </p>
+                <code>import React from 'react';
+        import ReactDOM from 'react-dom';
+        
+        class App extends React.Component {
+           constructor(props) {
+              super(props);
+                
+              this.state = {
+                 data: ''
+              }
+              this.updateState = this.updateState.bind(this);
+              this.clearInput = this.clearInput.bind(this);
+           };
+           updateState(e) {
+              this.setState({data: e.target.value});
+           }
+           clearInput() {
+              this.setState({data: ''});
+              ReactDOM.findDOMNode(this.refs.myInput).focus();
+           }
+           render() {
+              return (
+                    input value = {this.state.data} onChange = {this.updateState} 
+                       ref = "myInput"
+                    button onClick = {this.clearInput}>CLEAR
+                    {this.state.data}
+              );
+           }
+        }
+        export default App;
+        </code>
+            </article>
+        </section>
+
+        <section id="Keys" class="main-section">
+            <header>
+                <h2>Keys</h2>
+            </header>
+            <article>
+                <p>React keys are useful when working with dynamically created components or when your lists are altered
+                    by the users.
+                    Setting the key value will keep your components uniquely identified after the change.
+                </p>
+                <p>
+                    The map function will create three elements from our data array. Since the key value needs to be
+                    unique for every element,
+                    we will assign i as a key for each created element.
+                </p>
+
+            </article>
+        </section>
+
+        <section id="Flux Concepts" class="main-section">
+            <header>
+                <h2>Flux Concepts</h2>
+            </header>
+            <article>
+                <p>Flux is a programming concept, where the data is uni-directional.
+                    This data enters the app and flows through it in one direction until it is rendered on the screen.
+                <ol>
+                    <li>a simple explanation of the flux concept:</li>
+                    <ol>
+                        <li>Actions − Actions are sent to the dispatcher to trigger the data flow.</li>
+                        <li>Dispatcher − This is a central hub of the app. All the data is dispatched and sent to the
+                            stores. </li>
+                        <li>Store − Store is the place where the application state and logic are held.
+                            Every store is maintaining a particular state and it will update when needed. </li>
+                        <li>View − The view will receive data from the store and re-render the app.</li>
+                    </ol>
+                </ol>
+                </p>
+            </article>
+        </section>
+
+        <section id="Events" class="main-section">
+            <header>
+                <h2>Events</h2>
+            </header>
+            <article>
+                <p>This is a simple example where we will only use one component.
+                    We are just adding onClick event that will trigger updateState function once the button is clicked.
+                </p>
+                <code>import React from 'react';
+
+        class App extends React.Component {
+           constructor(props) {
+              super(props);
+              
+              this.state = {
+                 data: 'Initial data...'
+              }
+              this.updateState = this.updateState.bind(this);
+           };
+           updateState() {
+              this.setState({data: 'Data updated...'})
+           }
+           render() {
+              return (
+                    button onClick = {this.updateState}>CLICK
+                    {this.state.data}
+              );
+           }
+        }
+        export default App;
+        </code>
+                <p>When we need to update the state of the parent component from its child,
+                    we can create an event handler (updateState) in the parent component and pass it as a prop
+                    (updateStateProp)
+                    to the child component where we can just call it.
+                </p>
+                <code>import React from 'react';
+
+        class App extends React.Component {
+           constructor(props) {
+              super(props);
+              
+              this.state = {
+                 data: 'Initial data...'
+              }
+              this.updateState = this.updateState.bind(this);
+           };
+           updateState() {
+              this.setState({data: 'Data updated from the child component...'})
+           }
+           render() {
+              return (
+                    Content myDataProp = {this.state.data} 
+                       updateStateProp = {this.updateState}
+              );
+           }
+        }
+        class Content extends React.Component {
+           render() {
+              return (
+                    button onClick = {this.props.updateStateProp}>CLICK
+                    {this.props.myDataProp}
+              );
+           }
+        }
+        export default App;
+        </code>
+            </article>
+        </section>
+
+        <section id="Router" class="main-section">
+            <header>
+                <h2>Router</h2>
+            </header>
+            <article>
+                <p>Step 1 - Install a React Router
+                    <code>C:\Users\username\Desktop\reactApp>npm install react-router
+                </code>
+                </p>
+                <p>Step 2 - Create Components</p>
+                <p>In this step, we will create four components. The App component will be used as a tab menu.
+                    The other three components (Home), (About) and (Contact) are rendered once the route has changed.
+                    <code>import React from 'react';
+                    import ReactDOM from 'react-dom';
+                    import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
+                    
+                    class App extends React.Component {
+                       render() {
+                          return (
+                                Home
+                                About
+                                Contact
+                                {this.props.children}
+                          )
+                       }
+                    }
+                    export default App;
+                    
+                    class Home extends React.Component {
+                       render() {
+                          return (
+                                Home...
+                          )
+                       }
+                    }
+                    export default Home;
+                    
+                    class About extends React.Component {
+                       render() {
+                          return (
+                                About...
+                          )
+                       }
+                    }
+                    export default About;
+                    
+                    class Contact extends React.Component {
+                       render() {
+                          return (
+                                Contact...
+                          )
+                       }
+                    }
+                    export default Contact;
+                    </code>
+                </p>
+                <p>Step 3 - Add a Router
+                    Now, we will add routes to the app. Instead of rendering App element like in the previous example,
+                    this time the Router will be rendered. We will also set components for each route.
+                </p>
+                <code>
+                ReactDOM.render((
+                    Router history = {browserHistory}
+                       Route path = "/" component = {App}
+                          IndexRoute component = {Home} /
+                          Route path = "home" component = {Home} /
+                          Route path = "about" component = {About} /
+                          Route path = "contact" component = {Contact} /
+                       Route
+                    Router
+                 ), document.getElementById('app'))
+                 
+             </code>
+            </article>
+        </section>
+
+        <section id="Higher Order Components" class="main-section">
+            <header>
+                <h2>Higher Order Components</h2>
+            </header>
+            <article>
+                <p>Higher order components are JavaScript functions used for adding additional functionalities to the
+                    existing component.
+                    These functions are pure, which means they are receiving data and returning values according to that
+                    data.
+                    If the data changes, higher order functions are re-run with different data input.
+                    If we want to update our returning component, we don't have to change the HOC.
+                    All we need to do is change the data that our function is using.
+                <ol>
+                    <li>Higher Order Component (HOC) is wrapping around "normal" component and provide additional data
+                        input.
+                    </li>
+                    <li>It is actually a function that takes one component and returns another component that wraps the
+                        original one.
+                    </li>
+                    <li>The MyHOC is a higher order function that is used only to pass data to MyComponent.
+                        This function takes MyComponent, enhances it with newData and returns the enhanced component
+                        that
+                        will be rendered on the screen.
+                    </li>
+                </ol>
+                </p>
+                <code>import React from 'react';
+
+                var newData = {
+                   data: 'Data from HOC...',
+                }
+                
+                var MyHOC = ComposedComponent => class extends React.Component {
+                   componentDidMount() {
+                      this.setState({
+                         data: newData.data
+                      });
+                   }
+                   render() {
+                      return ComposedComponent {...this.props} {...this.state} ;
+                   }
+                };
+                class MyComponent extends React.Component {
+                   render() {
+                      return (
+                            {this.props.data}
+                      )
+                   }
+                }
+                
+                export default MyHOC(MyComponent);
+                </code>
+            </article>
+        </section>
+
+        <section id="Reference" class="main-section">
+            <header>
+                <h2>Reference</h2>
+            </header>
+            <article>
+                <p>All the documentation in this page is taken from <a
+                        href="https://www.tutorialspoint.com/reactjs/index.htm">TutorialsPoint</a></p>
+            </article>
+        </section>
+    </main>
+
+    <footer></footer> 
+</body>
+
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+</html>
